@@ -25,8 +25,11 @@ int HashTable::size() const {
 }
 
 int HashTable::bucketOf(int id) const {
-    (void)id;
-    return 0;  // TODO
+    int b = id % bucketCount_;
+    if (b < 0) {
+        b += bucketCount_;
+    }
+    return b;
 }
 
 int HashTable::bucketLength(int b) const {
